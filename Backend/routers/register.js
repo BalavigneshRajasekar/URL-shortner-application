@@ -58,7 +58,7 @@ router.post("/register/user", async (req, res) => {
 
     const messages = {
       from: "vigneshvickybsc1999@gmail.com",
-      to: createdUser.email,
+      to: email,
       subject: "Account Activation",
       text: "Hi find Activation link here",
       html: mail,

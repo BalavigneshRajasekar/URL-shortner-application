@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const router = require("./routers/register");
 const loginRouter = require("./routers/login");
+const urlRouter = require("./routers/url");
 const app = express();
 
 //middlewares
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 //Route paths
 app.use("/api/register", router);
 app.use("/api/login", loginRouter);
+app.use("/url", urlRouter);
 
 mongoose.connect("mongodb://localhost:27017/URL_Shortener").then(() => {
   console.log("Database connected");
