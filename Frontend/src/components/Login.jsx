@@ -1,7 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Form, Input, Button, Checkbox, Image } from "antd";
 import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 function Login() {
   const onFinish = (values) => {
@@ -56,12 +58,13 @@ function Login() {
             />
           </Form.Item>
 
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
+          <Form.Item>
+            <p>
+              Don't have an account ?{" "}
+              <Link className="link-style-none" to={"/register"}>
+                SignUP
+              </Link>
+            </p>
             <Button type="primary" htmlType="submit">
               Submit
             </Button>
