@@ -1,13 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Form, Input, Button, Checkbox, Image } from "antd";
+import { Form, Input, Button, Checkbox, Image, message } from "antd";
 import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
-  const onFinish = (values) => {
-    console.log(values);
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/login/login/user",
+        values
+      );
+      console.log(response);
+      message.success(response.data.message);
+    } catch (err) {
+      console.log(err);
+      message.error(err.response.data.message);
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -65,6 +76,13 @@ function Login() {
                 SignUP
               </Link>
             </p>
+            <div>
+              <p>
+                <Link className="link-style-none" to={"/forgot-password"}>
+                  Forgot Password
+                </Link>
+              </p>
+            </div>
             <Button type="primary" htmlType="submit">
               Submit
             </Button>

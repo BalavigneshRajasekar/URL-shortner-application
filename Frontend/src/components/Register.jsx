@@ -1,12 +1,28 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, Image } from "antd";
+import { Form, Input, Button, Checkbox, Image, message } from "antd";
 import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
-  const onFinish = (values) => {
-    console.log(values);
+  const [btnLoading, setBtnLoading] = useState(false);
+  const onFinish = async (values) => {
+    try {
+      setBtnLoading(true);
+
+      const response = await axios.post(
+        "http://localhost:3000/api/register/register/user",
+        values
+      );
+      console.log(response);
+      message.success(response.data.message);
+      setBtnLoading(false);
+    } catch (err) {
+      console.log(err);
+      message.error(err.response.data.msg);
+      setBtnLoading(false);
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -29,7 +45,7 @@ function Register() {
           autoComplete="off"
         >
           <Form.Item
-            name="username"
+            name="name"
             rules={[
               {
                 required: true,
@@ -88,7 +104,7 @@ function Register() {
               span: 16,
             }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={btnLoading}>
               Register
             </Button>
           </Form.Item>
