@@ -4,8 +4,10 @@ import { Form, Input, Button, Checkbox, Image, message } from "antd";
 import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [btnLoading, setBtnLoading] = useState(false);
   const onFinish = async (values) => {
     try {
@@ -15,9 +17,10 @@ function Register() {
         "http://localhost:3000/api/register/register/user",
         values
       );
-      console.log(response);
+
       message.success(response.data.message);
       setBtnLoading(false);
+      navigate("/login");
     } catch (err) {
       console.log(err);
       message.error(err.response.data.msg);
