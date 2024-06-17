@@ -1,13 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import React from "react";
-import { Form, Input, Button, Checkbox, Image, message } from "antd";
-import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Form, Input, Button, Image, message } from "antd";
+import { MailOutlined, LockOutlined } from "@ant-design/icons";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
+  const navigate = useNavigate();
+  const [btnLoading, setBtnLoading] = useState(false);
   const onFinish = async (values) => {
+    setBtnLoading(true);
     try {
       const response = await axios.post(
         "http://localhost:3000/api/login/login/user",
@@ -15,9 +18,13 @@ function Login() {
       );
       console.log(response);
       message.success(response.data.message);
+      localStorage.setItem("userToken", response.data.authToken);
+      navigate("/home");
+      setBtnLoading(false);
     } catch (err) {
       console.log(err);
       message.error(err.response.data.message);
+      setBtnLoading(false);
     }
   };
   const onFinishFailed = (errorInfo) => {
@@ -83,7 +90,8 @@ function Login() {
                 </Link>
               </p>
             </div>
-            <Button type="primary" htmlType="submit">
+
+            <Button type="primary" htmlType="submit" loading={btnLoading}>
               Submit
             </Button>
           </Form.Item>

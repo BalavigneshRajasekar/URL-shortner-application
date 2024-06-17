@@ -12,7 +12,7 @@ const urlAuth = async (req, res, next) => {
     req.user = verifyToken;
     next();
   } catch (err) {
-    res.status(401).send({ message: "Invalid token", err: err });
+    return res.status(401).send({ message: "Invalid token", err: err });
   }
 };
 

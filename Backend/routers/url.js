@@ -36,7 +36,7 @@ urlRouter.get("/getShortUrl/:shortUrl", async (req, res) => {
 urlRouter.get("/getUrl", urlAuth, async (req, res) => {
   try {
     const url = await Url.find({ user: req.user.id }).populate("user");
-    res.status(200).json(url);
+    res.status(200).json({ url, message: "Data fetched" });
   } catch (err) {
     res.status(500).json({ message: err.message, data: "invalid" });
   }
