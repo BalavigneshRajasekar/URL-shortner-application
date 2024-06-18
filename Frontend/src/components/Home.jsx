@@ -19,7 +19,7 @@ function Home() {
   }, [userToken]);
 
   //For Navigation tab
-  const nav = ["UrlShortener", "Dashboard"];
+  const nav = ["UrlShortener", "Dashboard", "Logout"];
   const items = nav.map((value, index) => ({
     key: index + 1,
     label: value,
@@ -27,8 +27,12 @@ function Home() {
     onClick: () => {
       if (index == 0) {
         setUrlShortener(true);
-      } else {
+      } else if (index == 1) {
         setUrlShortener(false);
+      } else if (index == 2) {
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("resetToken");
+        navigate("/login");
       }
     },
   }));

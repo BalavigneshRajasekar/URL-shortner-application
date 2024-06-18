@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Landing from "./components/Landing";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
+import ForgotPassword from "./components/ForgotPassword";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
             <Route path="/login" element={<Login></Login>} />
             <Route path="/register" element={<Register></Register>} />
             <Route path="/home" element={<Home></Home>}></Route>
+            <Route
+              path="/forgot-password"
+              element={<ForgotPassword></ForgotPassword>}
+            ></Route>
           </Routes>
         </BrowserRouter>
       </div>

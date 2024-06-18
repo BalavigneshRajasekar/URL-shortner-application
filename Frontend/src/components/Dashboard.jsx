@@ -44,7 +44,7 @@ function Dashboard() {
         key: index,
         Sno: index + 1,
         ShortUrl: `http://localhost:3000/url/getShortUrl/${value.shortUrl}`,
-        Date: new Date(value.date).toUTCString(),
+        Date: new Date(value.date).toDateString(),
       };
     });
   console.log(shortUrl);
