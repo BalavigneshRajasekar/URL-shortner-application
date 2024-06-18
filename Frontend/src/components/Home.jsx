@@ -14,6 +14,8 @@ function Home() {
   useEffect(() => {
     if (!userToken) {
       navigate("/login");
+    } else {
+      navigate("/home");
     }
     console.log(userToken);
   }, [userToken]);

@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, message, Spin } from "antd";
 import { LinkOutlined } from "@ant-design/icons";
 import axios from "axios";
+import Home from "./Home";
 
 function UrlShortner() {
   const [btnLoading, setBtnLoading] = useState(false);
   const [shortUrl, setShortUrl] = useState(null);
+  const [count, setCount] = useState(0);
   const onFinish = async (value) => {
     setBtnLoading(true);
     try {
@@ -30,7 +32,12 @@ function UrlShortner() {
       setBtnLoading(false);
     }
   };
-  const onFinishFailed = () => {};
+  const onFinishFailed = (err) => {
+    console.log("Failed:", err);
+  };
+  const handleClicked = () => {
+    setCount(count + 1);
+  };
   return (
     <div>
       <div>
@@ -79,11 +86,13 @@ function UrlShortner() {
             }}
             className="shadow-md rounded-2 p-2"
             href={shortUrl}
+            onClick={handleClicked}
             target="_blank"
           >
             LINK : {shortUrl}
           </a>
         )}
+        <h6 className="text-end">count :{count}</h6>
         {btnLoading && <Spin className="ms-3"></Spin>}
       </div>
     </div>

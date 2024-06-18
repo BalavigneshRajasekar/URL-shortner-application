@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, message, Segmented } from "antd";
 import axios from "axios";
+import Home from "./Home";
 function Dashboard() {
   const [shortUrl, setShortUrl] = useState([]);
   const [filters, setFilters] = useState([]);

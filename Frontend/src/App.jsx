@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
@@ -17,10 +18,7 @@ function App() {
             <Route path="/login" element={<Login></Login>} />
             <Route path="/register" element={<Register></Register>} />
             <Route path="/home" element={<Home></Home>}></Route>
-            <Route
-              path="/forgot-password"
-              element={<ForgotPassword></ForgotPassword>}
-            ></Route>
+            <Route path="/forgot-password" element={<ForgotPassword />}></Route>
           </Routes>
         </BrowserRouter>
       </div>

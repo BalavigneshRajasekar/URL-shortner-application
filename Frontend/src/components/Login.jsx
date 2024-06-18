@@ -79,14 +79,14 @@ function Login() {
           <Form.Item>
             <p>
               Don't have an account ?{" "}
-              <Link className="link-style-none" to={"/register"}>
+              <Link className="text-decoration-none" to={"/register"}>
                 SignUP
               </Link>
             </p>
             <div>
               <p>
-                <Link className="link-style-none" to={"/forgot-password"}>
-                  Forgot Password
+                <Link className="text-decoration-none" to={"/forgot-password"}>
+                  Forgot Password ?
                 </Link>
               </p>
             </div>
