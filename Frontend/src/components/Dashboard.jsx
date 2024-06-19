@@ -15,11 +15,14 @@ function Dashboard() {
   const fetchAPI = async () => {
     setTableLoading(true);
     try {
-      const response = await axios.get("http://localhost:3000/url/getUrl", {
-        headers: {
-          Authorization: localStorage.getItem("userToken"),
-        },
-      });
+      const response = await axios.get(
+        "https://url-shortner-ezi0.onrender.com/url/getUrl",
+        {
+          headers: {
+            Authorization: localStorage.getItem("userToken"),
+          },
+        }
+      );
       setTableLoading(false);
       message.success(response.data.message);
       setShortUrl(response.data.url);
@@ -64,7 +67,7 @@ function Dashboard() {
       return {
         key: index,
         Sno: index + 1,
-        ShortUrl: `http://localhost:3000/url/getShortUrl/${value.shortUrl}`,
+        ShortUrl: `https://url-shortner-ezi0.onrender.com/url/getShortUrl/${value.shortUrl}`,
         Date: new Date(value.date).toDateString(),
       };
     });

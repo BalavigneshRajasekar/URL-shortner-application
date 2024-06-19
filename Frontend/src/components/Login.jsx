@@ -13,7 +13,7 @@ function Login() {
     setBtnLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/login/login/user",
+        "https://url-shortner-ezi0.onrender.com/api/login/login/user",
         values
       );
       console.log(response);

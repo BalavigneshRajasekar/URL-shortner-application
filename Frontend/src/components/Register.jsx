@@ -14,7 +14,7 @@ function Register() {
       setBtnLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3000/api/register/register/user",
+        "https://url-shortner-ezi0.onrender.com/api/register/register/user",
         values
       );
 

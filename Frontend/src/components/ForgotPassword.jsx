@@ -14,7 +14,7 @@ function ForgotPassword() {
     setBtnLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/reset/resetLink",
+        "https://url-shortner-ezi0.onrender.com/api/reset/resetLink",
         values
       );
       message.success(response.data.message);
@@ -36,7 +36,7 @@ function ForgotPassword() {
     if (code.length >= 5) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/reset/password",
+          "https://url-shortner-ezi0.onrender.com/api/reset/password",
           { code: code },
           {
             headers: {
