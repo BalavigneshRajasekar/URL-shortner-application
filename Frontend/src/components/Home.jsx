@@ -15,7 +15,7 @@ function Home() {
   //Checking user has token r not
   useEffect(() => {
     if (!userToken) {
-      navigate("/login");
+      navigate("/");
     } else {
       navigate("/home");
     }
@@ -25,7 +25,7 @@ function Home() {
   const confirm = (e) => {
     localStorage.removeItem("userToken");
     localStorage.removeItem("resetToken");
-    navigate("/login");
+    navigate("/");
   };
   return (
     <div>
