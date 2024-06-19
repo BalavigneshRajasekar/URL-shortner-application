@@ -14,7 +14,7 @@ urlRouter.post("/generate/url", urlAuth, async (req, res) => {
     await newUrl.save();
     res.status(200).json({
       message: "Short URL created",
-      url: `http://localhost:3000/url/getShortUrl/${shortUrl}`,
+      url: `https://url-shortner-ezi0.onrender.com/url/getShortUrl/${shortUrl}`,
     });
   } catch (err) {
     res.status(500).json({ message: err.message });

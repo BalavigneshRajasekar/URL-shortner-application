@@ -42,7 +42,7 @@ router.post("/register/user", async (req, res) => {
           button: {
             color: "#22BC66",
             text: "Activate account",
-            link: `http://localhost:3000/api/register/activate/${createdUser._id}`,
+            link: `https://url-shortner-ezi0.onrender.com/api/register/activate/${createdUser._id}`,
           },
         },
       },

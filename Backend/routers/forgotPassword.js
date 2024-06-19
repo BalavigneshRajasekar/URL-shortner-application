@@ -35,7 +35,7 @@ resetPassword.post("/reset/password", verifyCodeAuth, async (req, res) => {
           button: {
             color: "#22BC66",
             text: "Reset Password",
-            link: `http://localhost:3000/api/resetPassword/${req.user.id}`,
+            link: `https://url-shortner-ezi0.onrender.com/api/resetPassword/${req.user.id}`,
           },
         },
       },
