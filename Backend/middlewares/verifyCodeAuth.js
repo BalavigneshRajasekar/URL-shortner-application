@@ -1,6 +1,7 @@
 const Jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+//Middleware for verifying the reset password token whether it is expired or not
 const verifyCodeAuth = (req, res, next) => {
   const resetToken = req.header("Authorization");
   console.log(resetToken);

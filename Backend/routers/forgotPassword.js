@@ -99,7 +99,6 @@ resetPassword.post("/resetPassword/:id", async (req, res) => {
     user.resetCode = null;
     await user.save();
 
-    // await signup.updateOne({ _id: id }, { $set: { password: hashPassword } });
     res.render("successfullmsg", {
       name: user.name,
     });

@@ -11,6 +11,7 @@ function Home() {
   const navigate = useNavigate();
   const [urlShortener, setUrlShortener] = useState(true);
   const [userToken, setUserToken] = useState(localStorage.getItem("userToken"));
+  //Checking user has token r not
   useEffect(() => {
     if (!userToken) {
       navigate("/login");

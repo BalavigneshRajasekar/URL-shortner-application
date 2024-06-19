@@ -11,6 +11,7 @@ function Dashboard() {
   useEffect(() => {
     fetchAPI();
   }, []);
+  //Fetch the data from server when component is loaded
   const fetchAPI = async () => {
     setTableLoading(true);
     try {
@@ -56,6 +57,7 @@ function Dashboard() {
     }
   };
 
+  //configure data for dashboard  tables
   const dataSource =
     filters.length > 0 &&
     filters.map((value, index) => {
@@ -67,6 +69,8 @@ function Dashboard() {
       };
     });
   console.log(filters);
+
+  // Table columns declared here
   const columns = [
     {
       title: "S.NO",

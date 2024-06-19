@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
   const [btnLoading, setBtnLoading] = useState(false);
-  const [code, setCode] = useState(false);
+  const [code, setCode] = useState(false); //for enabling verification code input
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
