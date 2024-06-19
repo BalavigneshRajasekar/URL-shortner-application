@@ -11,7 +11,7 @@ const urlSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default: Date.now(),
+    default: new Date().toLocaleDateString(),
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

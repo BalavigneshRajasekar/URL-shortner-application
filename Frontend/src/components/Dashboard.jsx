@@ -4,8 +4,8 @@ import { Table, message, Segmented } from "antd";
 import axios from "axios";
 import Home from "./Home";
 function Dashboard() {
-  const [shortUrl, setShortUrl] = useState([]);
-  const [filters, setFilters] = useState([]);
+  const [shortUrl, setShortUrl] = useState([]); // Url link and user data from server
+  const [filters, setFilters] = useState([]); // Filter data in order to shown in dashboard
   const [tableLoading, setTableLoading] = useState(false);
 
   useEffect(() => {
@@ -22,25 +22,43 @@ function Dashboard() {
       setTableLoading(false);
       message.success(response.data.message);
       setShortUrl(response.data.url);
+      setFilters(response.data.url);
     } catch (error) {
       console.log(error);
       message.success(error.response.data.message);
     }
   };
 
+  // Handle the filters to render into dashboard
   const segments = (values) => {
     console.log(values);
+
     if (values == "All") {
-      setShortUrl([
-        shortUrl.filter((value) => {
-          console.log(value.date == Date.now());
-        }),
-      ]);
+      setFilters(shortUrl);
+    } else if (values == "Today") {
+      const filterData = shortUrl.filter((value) => {
+        return (
+          new Date(value.date).toLocaleDateString() ==
+          new Date().toLocaleDateString()
+        );
+      });
+      setFilters(filterData);
+    } else if (values == "Monthly") {
+      const filterData = shortUrl.filter((value) => {
+        return new Date(value.date).getMonth() == new Date().getMonth();
+      });
+      setFilters(filterData);
+    } else if (values == "Yearly") {
+      const filterData = shortUrl.filter((value) => {
+        return new Date(value.date).getFullYear() == new Date().getFullYear();
+      });
+      setFilters(filterData);
     }
   };
+
   const dataSource =
-    shortUrl.length > 0 &&
-    shortUrl.map((value, index) => {
+    filters.length > 0 &&
+    filters.map((value, index) => {
       return {
         key: index,
         Sno: index + 1,
@@ -48,7 +66,7 @@ function Dashboard() {
         Date: new Date(value.date).toDateString(),
       };
     });
-  console.log(shortUrl);
+  console.log(filters);
   const columns = [
     {
       title: "S.NO",
