@@ -12,7 +12,6 @@ and User can track how many short URL he created in dashboard and user can see h
         * A INput for users to enter their Long URl
         * In return he got Short URL as a link and also count how many time he clicked the link
 
-
 #### 2. Two step activation:
 
        * First user Register the account then an Activation link send to the mail through that activate the account
@@ -22,8 +21,6 @@ and User can track how many short URL he created in dashboard and user can see h
        * Once usere enter the MAil  the verificationn code send to the mail
        * once user got the verification code enter that code in to another input once after enter user get another mail with reset password link
        * once open the link the reset password form will appear
-
-
 
 #### 4. backend API :
 
@@ -35,9 +32,6 @@ and User can track how many short URL he created in dashboard and user can see h
 #### API Documentation :
 
      POSTMAN : https://documenter.getpostman.com/view/35282596/2sA3XTeLFs
-
-
-
 
 ## Demo
 
