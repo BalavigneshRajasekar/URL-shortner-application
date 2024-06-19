@@ -14,7 +14,7 @@ function UrlShortner() {
     setBtnLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/url/generate/url",
+        "https://url-shortner-ezi0.onrender.com/url/generate/url",
         value,
         {
           headers: {

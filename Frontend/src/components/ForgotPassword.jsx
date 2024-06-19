@@ -32,8 +32,9 @@ function ForgotPassword() {
 
   const handleChange = async (e) => {
     let code = e.target.value;
-    setBtnLoading(true);
+
     if (code.length >= 5) {
+      setBtnLoading(true);
       try {
         const response = await axios.post(
           "https://url-shortner-ezi0.onrender.com/api/reset/password",
