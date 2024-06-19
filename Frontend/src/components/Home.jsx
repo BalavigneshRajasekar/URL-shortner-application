@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { Layout, Menu, Image } from "antd";
+import { Layout, Menu, Image, Popconfirm, Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import { LinkOutlined, SettingOutlined } from "@ant-design/icons";
+// import { LinkOutlined, SettingOutlined } from "@ant-design/icons";
+
 import UrlShortner from "./UrlShortner";
 import Dashboard from "./Dashboard";
 
@@ -21,25 +22,11 @@ function Home() {
     console.log(userToken);
   }, [userToken]);
 
-  //For Navigation tab
-  const nav = ["UrlShortener", "Dashboard", "Logout"];
-  const items = nav.map((value, index) => ({
-    key: index + 1,
-    label: value,
-    icon: index == 0 ? <LinkOutlined /> : <SettingOutlined />,
-    onClick: () => {
-      if (index == 0) {
-        setUrlShortener(true);
-      } else if (index == 1) {
-        setUrlShortener(false);
-      } else if (index == 2) {
-        localStorage.removeItem("userToken");
-        localStorage.removeItem("resetToken");
-        navigate("/login");
-      }
-    },
-  }));
-
+  const confirm = (e) => {
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("resetToken");
+    navigate("/login");
+  };
   return (
     <div>
       <Layout style={{ height: "100vh" }}>
@@ -52,8 +39,27 @@ function Home() {
             mode="horizontal"
             defaultSelectedKeys={["1"]}
             style={{ flex: 1, minWidth: 0, justifyContent: "end" }}
-            items={items}
-          />
+          >
+            <Menu.Item key="1" onClick={() => setUrlShortener(true)}>
+              UrlShortener
+            </Menu.Item>
+            <Menu.Item key="2" onClick={() => setUrlShortener(false)}>
+              Dashboard
+            </Menu.Item>
+            <Menu.Item key="3">
+              <Popconfirm
+                title="Logout"
+                description="Are you sure to want to Logout?"
+                onConfirm={confirm}
+                okText="Yes"
+                cancelText="No"
+              >
+                <Button type="primary" danger>
+                  Logout
+                </Button>
+              </Popconfirm>
+            </Menu.Item>
+          </Menu>
         </Header>
         <Content style={{ padding: "0 48px" }}>
           {urlShortener ? <UrlShortner></UrlShortner> : <Dashboard />}
