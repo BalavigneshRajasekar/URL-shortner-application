@@ -1,6 +1,7 @@
 const Jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+//MIddleware for verifying user Auth token
 const urlAuth = async (req, res, next) => {
   const token = req.header("Authorization");
   try {

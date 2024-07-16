@@ -6,7 +6,7 @@ const Jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const resetRouter = express.Router();
-//FUnction for create Random string
+//Function for create Random string
 function randomString(length) {
   let result = "";
   const characters =
@@ -19,7 +19,7 @@ function randomString(length) {
   }
   return result;
 }
-//Api to generate random string code for reset password
+//Endpoint to generate random string code for reset password
 resetRouter.post("/resetLink", async (req, res) => {
   const { email } = req.body;
 
